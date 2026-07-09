@@ -33,14 +33,13 @@
             --rojo-peru: #D91424;
         }
 
-        .whatsapp-btn {
+       .whatsapp-btn {
   position: fixed;
-  bottom: 20px;       /* Distancia desde abajo */
-  right: 20px;        /* Distancia desde la derecha */
+  bottom: 20px;
+  right: 20px;
   width: 60px;
   height: 60px;
-  z-index: 9999;      /* Asegura que quede por encima de todo */
-  transition: transform 0.3s ease;
+  z-index: 9999999 !important; /* El !important le da prioridad absoluta */
 }
 
 /* Efecto al pasar el cursor (hover) */
