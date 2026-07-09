@@ -944,6 +944,31 @@
         });
     </script>
     </script>
+
+    <!-- Botón de Facebook Messenger (Aparece arriba de WhatsApp) -->
+<a href="https://www.facebook.com/profile.php?id=61579777508155&locale=es_LA" target="_blank" rel="noopener noreferrer" style="
+  position: fixed;
+  bottom: 90px;       /* Más alto que el de WhatsApp (que tiene 20px) */
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #0084FF; /* Azul de Messenger */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+  z-index: 999999;
+  transition: transform 0.3s;"
+  onmouseover="this.style.transform='scale(1.1)'"
+  onmouseout="this.style.transform='scale(1)'">
+  
+  <!-- Icono de Messenger en SVG -->
+  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" viewBox="0 0 16 16">
+    <path d="M0 7.988c0L2.602 4.1c.227-.34.703-.415 1.02-.16l2.451 1.96a.75.75 0 0 0 .939.002l3.41-2.557c.435-.327.977.205.672.69L8.5 8.16a.75.75 0 0 0-.2.433l-.22 2.896c-.042.56-.71.747-1.008.267L4.475 7.97a.75.75 0 0 0-.965-.115L.452 9.54c-.456.257-.952-.22-.727-.69L0 7.988Z"/>
+    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM8 1.467a6.533 6.533 0 1 0 0 13.066 6.533 6.533 0 0 0 0-13.066Z"/>
+  </svg>
+</a>
     <a href="https://wa.me/51937528343?text=Hola" target="_blank" rel="noopener noreferrer" style="
   position: fixed;
   bottom: 20px;
