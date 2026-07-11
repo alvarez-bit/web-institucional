@@ -159,13 +159,21 @@
             justify-content: center;
             align-items: center;
         }
-      
+
         #inicio h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    /* Efecto de texto bicolor */
+    background: linear-gradient(to right, #D91424, #FFFFFF, #D91424);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+       /* #inicio h1 {
             color: var(--blanco);
             font-size: 3rem;
             margin-bottom: 10px;
-        }
-        
+        }*/
         #inicio p {
             font-size: 1.2rem;
             max-width: 800px;
@@ -290,6 +298,15 @@
             height: 180px;
             object-fit: cover;
         }
+        <div id="modal-fiestas-patrias" class="modal">
+    <div class="modal-content" style="text-align: center; border: 3px solid var(--rojo-peru);">
+        <span class="close-modal" onclick="closeModal('modal-fiestas-patrias')">&times;</span>
+        <h2 style="color: var(--rojo-peru);">¡Felices Fiestas Patrias! 🇵🇪</h2>
+        <p style="font-size: 1.1rem; margin-bottom: 15px;">La comunidad educativa de la I.E. JEC "Luis Alberto Sánchez" les desea un próspero aniversario patrio.</p>
+        <p style="font-style: italic;">"Orgullosos de nuestras raíces, educando para el futuro."</p>
+        <button class="btn" onclick="closeModal('modal-fiestas-patrias')" style="background-color: var(--rojo-vino); color: #fff; margin-top: 15px;">¡Viva el Perú!</button>
+    </div>
+</div>
 
         .deporte-info {
             padding: 15px;
@@ -938,11 +955,20 @@
                 }, 4000);
             }
         }
-
-        // Ejecutar una lluvia sutil de confeti patriótico automáticamente al cargar la web
+       /*
+       // Ejecutar una lluvia sutil de confeti patriótico automáticamente al cargar la web
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(lanzarConfeti, 1200);
         });
+        */
+        window.addEventListener('DOMContentLoaded', () => {
+    setTimeout(lanzarConfeti, 1200);
+    
+    // Abre el mensaje de Fiestas Patrias automáticamente a los 2 segundos
+    setTimeout(() => {
+        openModal('modal-fiestas-patrias');
+    }, 2000);
+});
     </script>
     </script>
 
