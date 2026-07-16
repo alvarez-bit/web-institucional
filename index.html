@@ -132,6 +132,21 @@
         nav ul li a:hover {
             opacity: 0.8;
         }
+
+        /* Destacado del botón de la Semana Patriótica en el menú */
+        nav ul li.destacado-patrio a {
+            color: var(--dorado);
+            border: 2px dashed var(--dorado);
+            padding: 5px 10px;
+            border-radius: 5px;
+            animation: latido 2s infinite;
+        }
+
+        @keyframes latido {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
         
         /* Secciones */
         section {
@@ -432,6 +447,12 @@
             animation: animatetop 0.4s;
         }
 
+        /* Modal especial más grande para la Semana Patriótica */
+        .modal-content.patrio-ancho {
+            width: 70%;
+            border: 3px solid var(--rojo-peru);
+        }
+        
         @keyframes animatetop {
             from {top: -300px; opacity: 0}
             to {top: 0; opacity: 1}
@@ -505,6 +526,7 @@
         <ul>
             <li><a href="#inicio">Inicio</a></li>
             <li><a href="#quienes-somos">Quiénes Somos</a></li>
+            <li class="destacado-patrio"><a href="#" onclick="openModal('modal-patria'); lanzarConfeti(); return false;">🇵🇪 Semana Patriótica 🇵🇪</a></li>
             <li><a href="#academico">Académico</a></li>
             <li><a href="#crt">Recursos Tecnológicos</a></li>
             <li><a href="#matricula">Admisión 2026</a></li>
@@ -618,6 +640,29 @@
         <button class="btn" onclick="closeModal('modal-fiestas-patrias')" style="background-color: var(--rojo-vino); color: #fff; margin-top: 15px;">¡Viva el Perú!</button>
     </div>
 </div>
+
+         <!-- MODAL NUEVO: Semana Patriótica con Galería de Fotos -->
+        <div id="modal-patria" class="modal">
+            <div class="modal-content patrio-ancho">
+                <span class="close-modal" onclick="closeModal('modal-patria')">&times;</span>
+                <h2 style="color: var(--rojo-peru); text-align: center; border-bottom: 2px solid var(--rojo-peru); padding-bottom: 10px;">🇵🇪 Celebraciones de la Semana Patriótica 🇵🇪</h2>
+                <p style="text-align: center; margin: 15px 0; font-size: 1.05rem;">Revive las actividades y momentos más significativos de nuestra institución conmemorando nuestra independencia y amor por el Perú.</p>
+                
+                <!-- Reemplaza el origen "src" de cada foto con tus imágenes correspondientes -->
+                <div class="galeria">
+                    <img src="img/p1.jpeg" alt="Desfile Escolar" onclick="lanzarConfeti()">
+                    <img src="img/img2.jpeg" alt="Ambientación Aula" onclick="lanzarConfeti()">
+                    <img src="img/c1.jpeg" alt="Actuación Central" onclick="lanzarConfeti()">
+                    <img src="img/c2.jpeg" alt="Periódico Mural" onclick="lanzarConfeti()">
+                    <img src="img/c3.jpeg" alt="Danzas Típicas" onclick="lanzarConfeti()">
+                    <img src="img/e1.jpg" alt="Escoltas" onclick="lanzarConfeti()">
+                </div>
+                
+                <div style="text-align: center; margin-top: 25px;">
+                    <button class="btn" style="background-color: var(--rojo-peru); color: white;" onclick="lanzarConfeti()">¡Lanzar Confeti Festivo! 🎉</button>
+                </div>
+            </div>
+        </div>
         <h3>Documentación e Información Pública</h3>
         <p style="font-size: 0.95rem; color: #555; margin-bottom: 15px;">Documentos institucionales oficiales de libre acceso para toda la comunidad escolar:</p>
         <div style="display: flex; flex-wrap: wrap; gap: 15px; margin: 20px 0;">
