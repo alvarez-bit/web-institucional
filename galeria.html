@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería de Fotos - 39° Aniversario I.E. Luis Alberto Sánchez</title>
+    <style>
+        :root {
+            --rojo-peru: #c8102e;
+            --rojo-vino: #800020;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: var(--rojo-peru);
+            margin-bottom: 5px;
+        }
+
+        p {
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        /* Cuadrícula de fotos */
+        .galeria-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .galeria-grid img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            cursor: pointer;
+            transition: transform 0.2s ease, filter 0.2s ease;
+        }
+
+        .galeria-grid img:hover {
+            transform: scale(1.03);
+            filter: brightness(0.9);
+        }
+
+        /* Estilos del visor/lightbox de ampliación */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .lightbox-img {
+            max-width: 90%;
+            max-height: 80vh;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #fff;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .lightbox-close:hover {
+            color: var(--rojo-peru);
+        }
+
+        /* Botones de navegación */
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            box-sizing: border-box;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+
+        .lightbox-btn {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            font-size: 24px;
+            padding: 10px 18px;
+            border-radius: 50%;
+            cursor: pointer;
+            pointer-events: auto;
+            transition: background-color 0.2s;
+        }
+
+        .lightbox-btn:hover {
+            background-color: var(--rojo-peru);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Galería del 39.° Aniversario 🎉</h1>
+    <p>I.E. JEC “Luis Alberto Sánchez” – Combayo, La Encañada</p>
+
+    <!-- Galería con las 6 fotos -->
+    <div class="galeria-grid">
+        <img src="./img/foto1.jpg" alt="Foto Aniversario 1" onclick="openLightbox(0)">
+        <img src="./img/foto2.jpg" alt="Foto Aniversario 2" onclick="openLightbox(1)">
+        <img src="./img/foto3.jpg" alt="Foto Aniversario 3" onclick="openLightbox(2)">
+        <img src="./img/foto4.jpg" alt="Foto Aniversario 4" onclick="openLightbox(3)">
+        <img src="./img/foto5.jpg" alt="Foto Aniversario 5" onclick="openLightbox(4)">
+        <img src="./img/foto6.jpg" alt="Foto Aniversario 6" onclick="openLightbox(5)">
+    </div>
+
+    <!-- Visor flotante (Lightbox) -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" class="lightbox-img" src="" alt="Imagen ampliada">
+        <div class="lightbox-nav">
+            <button class="lightbox-btn" onclick="changeImage(-1)">&#10094;</button>
+            <button class="lightbox-btn" onclick="changeImage(1)">&#10095;</button>
+        </div>
+    </div>
+
+    <script>
+        let currentIdx = 0;
+        const images = document.querySelectorAll('.galeria-grid img');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        function openLightbox(index) {
+            currentIdx = index;
+            lightboxImg.src = images[currentIdx].src;
+            lightbox.style.display = 'flex';
+        }
+
+        function closeLightbox() {
+            lightbox.style.display = 'none';
+        }
+
+        function changeImage(direction) {
+            currentIdx += direction;
+            if (currentIdx < 0) {
+                currentIdx = images.length - 1;
+            } else if (currentIdx >= images.length) {
+                currentIdx = 0;
+            }
+            lightboxImg.src = images[currentIdx].src;
+        }
+
+        // Cerrar al hacer clic fuera de la imagen
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // Soporte para cerrar con la tecla ESC o navegar con flechas del teclado
+        document.addEventListener('keydown', function(e) {
+            if (lightbox.style.display === 'flex') {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') changeImage(-1);
+                if (e.key === 'ArrowRight') changeImage(1);
+            }
+        });
+    </script>
+</body>
+</html>
